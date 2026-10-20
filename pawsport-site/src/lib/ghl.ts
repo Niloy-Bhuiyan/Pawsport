@@ -77,3 +77,5 @@ export async function submitLead(lead: Lead): Promise<{ mock: boolean }> {
   }
   return { mock: false };
 }
+
+// endpoint
