@@ -44,3 +44,5 @@ export default function SiteFooter({ dm }: { dm: 'D' | 'M' }) {
 }
 
 // footer
+
+// mobile
