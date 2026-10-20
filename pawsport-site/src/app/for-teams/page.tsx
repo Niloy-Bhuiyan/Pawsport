@@ -7,3 +7,5 @@ export const metadata: Metadata = { title: "For teams", description: "Pet reloca
 export default async function Page() {
   return <PageSwitch k="Teams" initial={await getMode()} />;
 }
+
+// teams
