@@ -1,0 +1,199 @@
+/* Shared design system for the rebuilt site chrome (nav, hero shell, feature
+   rows, pill grids, FAQ, pricing, CTA band, footer) — modeled on x.ai/bot's
+   flat, sticky-nav, card-based layout, using the existing Pawsport palette
+   and type (Fraunces / Figtree / DM Mono) defined in globals.css. */
+
+.pg{font-family:'Figtree',sans-serif;color:var(--ink)}
+.pg h1,.pg h2,.pg h3{font-family:'Fraunces',serif}
+
+/* ---------- Nav ---------- */
+.snav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 64px;background:rgba(246,236,215,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--tan)}
+.pg.m .snav{padding:16px 20px}
+.snav .sbrand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
+.snav .slinks{display:flex;align-items:center;gap:30px;list-style:none;margin:0;padding:0}
+.pg.m .snav .slinks{display:none}
+.snav .slinks a{color:var(--mut);text-decoration:none;font-size:15px;font-weight:600}
+.snav .slinks a:hover{color:var(--ink)}
+.snav .sactions{display:flex;align-items:center;gap:14px}
+.pg.m .snav .sactions .btn{display:none}
+.snav .sburger{display:none;width:40px;height:40px;border-radius:10px;border:1.5px solid var(--tan);background:var(--cream);align-items:center;justify-content:center;cursor:pointer}
+.pg.m .snav .sburger{display:flex}
+.snav .sburger i{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.snav .sburger i::before,.snav .sburger i::after{content:'';position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+.snav .sburger i::before{top:-6px}.snav .sburger i::after{top:6px}
+
+.sdrawer{position:fixed;inset:0;z-index:60;background:var(--paper);display:flex;flex-direction:column;padding:20px 24px 32px}
+.sdrawer .sdx{align-self:flex-end;width:40px;height:40px;border-radius:10px;border:1.5px solid var(--tan);background:var(--cream);cursor:pointer}
+.sdrawer .sdlinks{display:flex;flex-direction:column;gap:4px;margin-top:20px}
+.sdrawer .sdlinks a{display:block;padding:14px 4px;color:var(--ink);text-decoration:none;font-size:18px;font-weight:600;border-bottom:1px solid var(--tan)}
+.sdrawer .btn{margin-top:20px}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--rust);color:var(--cream)}
+.btn-primary:hover{box-shadow:0 10px 20px -10px rgba(194,73,42,.6)}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-ghost{background:var(--paper2);color:var(--ink);border-color:var(--tan)}
+.btn-sm{padding:10px 18px;font-size:14px}
+
+/* ---------- Section rhythm ---------- */
+.ssec{padding:96px 64px}
+.pg.m .ssec{padding:56px 22px}
+.ssec-narrow{max-width:980px;margin:0 auto}
+.ssec-head{max-width:640px;margin:0 auto 56px;text-align:center}
+.pg.m .ssec-head{margin-bottom:36px}
+.seyebrow{display:inline-block;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--rustd);margin-bottom:14px}
+.ssec-head h2{font-size:38px;line-height:1.15;margin:0 0 14px;font-weight:600}
+.pg.m .ssec-head h2{font-size:28px}
+.ssec-head p{font-size:17px;color:var(--mut);margin:0;line-height:1.5}
+.sem-rust{font-style:italic;color:var(--rust)}
+
+/* ---------- Home hero ---------- */
+.shero-home{padding:64px 64px 0;text-align:center}
+.pg.m .shero-home{padding:36px 20px 0}
+.shero-home h1{font-size:64px;line-height:1.04;font-weight:600;margin:0 0 20px}
+.pg.m .shero-home h1{font-size:36px}
+.shero-home h1 em.lh{font-style:italic;color:var(--rust);display:inline-block;position:relative}
+.shero-home h1 em.lh svg.swo{width:100%;height:auto}
+.pg.m .shero-home h1 em.lh svg.swo{width:90%}
+.shero-home .sub{max-width:560px;margin:0 auto 32px;font-size:19px;color:var(--mut);line-height:1.5}
+.pg.m .shero-home .sub{font-size:16px}
+.shero-home .shbtns{display:flex;gap:14px;justify-content:center;margin-bottom:56px;flex-wrap:wrap}
+.shero-home .ssuitwrap{max-width:560px;margin:0 auto;filter:drop-shadow(0 30px 40px rgba(43,33,24,.18))}
+.pg.m .shero-home .ssuitwrap{max-width:320px}
+.shero-home .ssuitwrap svg{width:100%;height:auto;display:block}
+.shero-home .suit{position:relative;display:block}
+/* Idle animations on the preserved suitcase illustration (same keyframes the
+   original design used, just re-scoped off the new wrapper instead of the
+   removed `.rootS` stage). */
+.shero-home .catg{animation:bCat 12s infinite cubic-bezier(.3,1.4,.5,1)}
+.shero-home .eyes{animation:bBlink 5s infinite;transform-box:fill-box;transform-origin:center}
+.shero-home .earL{transform-box:fill-box;transform-origin:50% 100%;animation:bEar 6s infinite}
+.shero-home .pawR{animation:bPaw 12s infinite ease-in-out}
+.shero-home .stk{transform-box:fill-box;transform-origin:center;opacity:1}
+.shero-home .pp{position:absolute;left:73.1%;top:35%;width:20.6%;height:16.4%;perspective:700px;z-index:3;transform:rotate(-7deg);animation:bPp 12s infinite}
+.shero-home .pp .base{position:absolute;inset:0;background:#FFFBF2;border-radius:3px 9px 9px 3px;box-shadow:0 6px 10px -4px rgba(0,0,0,.35);background-image:repeating-linear-gradient(0deg,transparent 0 11px,rgba(31,42,34,.08) 11px 12px)}
+.shero-home .pp .cover{position:absolute;inset:0;background:#2F6F6B;border-radius:3px 9px 9px 3px;transform-origin:left center;animation:bCov 12s infinite cubic-bezier(.5,0,.2,1);display:flex;align-items:center;justify-content:center;color:#F6D58E;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;backface-visibility:hidden;box-shadow:inset 0 0 0 4px rgba(246,213,142,.25)}
+
+/* ---------- Feature rows ---------- */
+.sfeat{display:flex;align-items:center;gap:72px;padding:36px 0}
+.sfeat.rev{flex-direction:row-reverse}
+.pg.m .sfeat,.pg.m .sfeat.rev{flex-direction:column;gap:24px;padding:20px 0}
+.sfeat .sfnum{font-family:'DM Mono',monospace;font-size:13px;color:var(--rustd);letter-spacing:.1em;margin-bottom:10px;display:block}
+.sfeat-text{flex:1 1 0;min-width:0}
+.sfeat-text h3{font-size:26px;margin:0 0 10px;font-weight:600}
+.pg.m .sfeat-text h3{font-size:21px}
+.sfeat-text p{font-size:16px;color:var(--mut);line-height:1.55;margin:0}
+.sfeat-visual{flex:1 1 0;min-width:0;background:var(--paper2);border:1.5px solid var(--tan);border-radius:20px;padding:28px;min-height:180px;display:flex;align-items:center;justify-content:center}
+.pg.m .sfeat-visual{width:100%;padding:20px;min-height:140px}
+
+/* ---------- Home: lean 3-step list + inline calendar preview ---------- */
+.ssteps3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:880px;margin:0 auto}
+.pg.m .ssteps3{grid-template-columns:1fr;gap:20px}
+.sstep3{text-align:center}
+.pg.m .sstep3{text-align:left;display:flex;align-items:baseline;gap:14px}
+.sstep3-n{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--paper2);border:1.5px solid var(--tan);font-family:'DM Mono',monospace;font-size:14px;margin-bottom:12px;flex:none}
+.sstep3 h3{font-size:18px;margin:0 0 6px;font-weight:600}
+.sstep3 p{margin:0;font-size:14px;color:var(--mut);line-height:1.5}
+.scal-inline{max-width:720px;margin:36px auto 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
+.scal-chip{font-family:inherit;font-size:13px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--tan);background:var(--paper2);color:var(--mut);cursor:pointer}
+.scal-chip.on{background:var(--teal);border-color:var(--teal);color:var(--cream)}
+.scal-inline-msg{width:100%;text-align:center;font-size:13px;color:var(--mut);margin-top:6px}
+
+/* ---------- Checklist / calendar card ---------- */
+.scal{background:var(--paper2);border:1.5px solid var(--tan);border-radius:24px;padding:40px;max-width:720px;margin:0 auto}
+.pg.m .scal{padding:22px;border-radius:18px}
+.scal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.scal-pet{font-weight:700}
+.scal-note{font-size:13px;color:var(--mut)}
+.scal-list{display:flex;flex-direction:column;gap:8px}
+.scal-row{display:flex;align-items:center;gap:14px;background:var(--cream);border-radius:12px;padding:12px 16px;cursor:pointer;border:1.5px solid transparent}
+.scal-row.on{border-color:var(--teal)}
+.scal-row .scal-box{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--tan);flex:none;display:flex;align-items:center;justify-content:center}
+.scal-row.on .scal-box{background:var(--teal);border-color:var(--teal);color:var(--cream)}
+.scal-row .scal-off{font-family:'DM Mono',monospace;font-size:12px;color:var(--rustd);width:46px;flex:none}
+.scal-row .scal-title{flex:1;font-size:15px}
+.scal-row .scal-date{font-size:13px;color:var(--mut)}
+.scal-msg{margin-top:18px;text-align:center;font-size:14px;color:var(--mut)}
+.scal-fine{margin-top:10px;text-align:center;font-size:12px;color:var(--mut);opacity:.75}
+
+/* ---------- Pill grid (audience / destination cards) ---------- */
+.spgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pg.m .spgrid{grid-template-columns:1fr}
+.spgrid.cols-4{grid-template-columns:repeat(4,1fr)}
+.pg.m .spgrid.cols-4{grid-template-columns:repeat(2,1fr)}
+.spcard{background:var(--paper2);border:1.5px solid var(--tan);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.spcard h3{margin:0;font-size:20px;font-weight:600}
+.spcard p{margin:0;font-size:15px;color:var(--mut);line-height:1.5}
+.spcard ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.spcard li{font-size:14px;color:var(--ink);display:flex;gap:8px;align-items:flex-start}
+.spcard li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);margin-top:7px;flex:none}
+.spcard .spk{font-family:'DM Mono',monospace;font-size:12px;color:var(--rustd);letter-spacing:.08em}
+.spcard .splink{margin-top:auto;font-weight:700;color:var(--rust);text-decoration:none;font-size:14px}
+
+.sdest{background:var(--cream);border:1.5px solid var(--tan);border-radius:14px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:var(--ink)}
+.sdest b{font-size:15px}
+.sdest span{font-family:'DM Mono',monospace;font-size:12px;color:var(--mut)}
+
+/* ---------- Process steps (trust section) ---------- */
+.ssteps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:36px}
+.pg.m .ssteps{grid-template-columns:1fr}
+.sstep{background:var(--paper2);border:1.5px solid var(--tan);border-radius:16px;padding:22px}
+.sstep .sstepk{font-family:'DM Mono',monospace;font-size:12px;color:var(--rustd);letter-spacing:.08em;margin-bottom:10px;display:block}
+.sstep h4{margin:0 0 8px;font-size:17px}
+.sstep p{margin:0;font-size:14px;color:var(--mut);line-height:1.5}
+.sstep .stag{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--teal);background:var(--cream);padding:4px 10px;border-radius:999px}
+.supdate{max-width:560px;margin:0 auto;background:var(--cream);border:1.5px solid var(--tan);border-radius:16px;padding:20px 24px}
+.supdate b{display:block;margin-bottom:4px}
+.supdate p{margin:0 0 10px;font-size:14px;color:var(--mut)}
+.supdate .stag{font-size:12px;font-weight:700;background:var(--paper2);padding:4px 10px;border-radius:999px;margin-right:8px}
+
+/* ---------- FAQ ---------- */
+.sfaq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.sfaq-item{border:1.5px solid var(--tan);border-radius:14px;background:var(--paper2);overflow:hidden}
+.sfaq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;background:none;border:none;text-align:left;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;font-family:inherit}
+.sfaq-q .sfplus{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--tan);display:flex;align-items:center;justify-content:center;font-size:15px;transition:transform .2s ease}
+.sfaq-item.open .sfplus{transform:rotate(45deg);background:var(--rust);border-color:var(--rust);color:var(--cream)}
+.sfaq-a{padding:0 22px;max-height:0;overflow:hidden;transition:all .25s ease;font-size:15px;color:var(--mut);line-height:1.55}
+.sfaq-item.open .sfaq-a{padding:0 22px 20px;max-height:400px}
+.sfaq-cta{text-align:center;margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- Pricing cards ---------- */
+.sprice{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.pg.m .sprice{grid-template-columns:1fr}
+.sprice-card{border:1.5px solid var(--tan);border-radius:20px;padding:30px;background:var(--paper2);display:flex;flex-direction:column}
+.sprice-card.rec{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.sprice-card .srecm{font-size:12px;font-weight:700;color:var(--rust);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.sprice-card.rec .srecm{color:#F2B98A}
+.sprice-card h3{margin:0 0 6px;font-size:20px}
+.sprice-card .sprc{font-family:'Fraunces',serif;font-size:36px;font-weight:600;margin:12px 0}
+.sprice-card .sprc small{font-size:14px;font-weight:400;opacity:.7}
+.sprice-card ul{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:8px;flex:1}
+.sprice-card li{font-size:14px;display:flex;gap:8px}
+.sprice-card.rec p,.sprice-card.rec li{color:#E7DCC8}
+
+/* ---------- CTA band ---------- */
+.sctaband{background:var(--ink);color:var(--cream);border-radius:28px;padding:56px;text-align:center;max-width:1100px;margin:0 auto}
+.pg.m .sctaband{padding:32px 22px;border-radius:20px}
+.sctaband h2{color:var(--cream);font-size:34px;margin:0 0 12px}
+.pg.m .sctaband h2{font-size:24px}
+.sctaband p{color:#D9CBB4;margin:0 0 28px;font-size:16px}
+
+/* ---------- Footer ---------- */
+.sfoot{border-top:1px solid var(--tan);padding:64px 64px 32px}
+.pg.m .sfoot{padding:40px 22px 24px}
+.sfoot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:40px}
+.sfoot-brand{max-width:320px}
+.sfoot-brand .sbrand{margin-bottom:12px}
+.sfoot-brand p{color:var(--mut);font-size:14px;line-height:1.5;margin:0}
+.sfoot-cols{display:flex;gap:56px;flex-wrap:wrap}
+.pg.m .sfoot-cols{gap:28px}
+.sfoot-col h4{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--rustd);margin:0 0 14px}
+.sfoot-col a{display:block;color:var(--mut);text-decoration:none;font-size:14px;margin-bottom:10px}
+.sfoot-col a:hover{color:var(--ink)}
+.sfoot-legal{border-top:1px solid var(--tan);padding-top:24px;font-size:13px;color:var(--mut);line-height:1.6}
+.sfoot-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:18px;flex-wrap:wrap;gap:10px}
+.sfoot-bottom .slinks{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+.sfoot-bottom a{color:var(--mut);text-decoration:none;font-size:13px}
+.sfoot-bottom a:hover{color:var(--ink)}
