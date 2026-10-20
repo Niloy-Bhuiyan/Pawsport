@@ -7,3 +7,5 @@ export const metadata: Metadata = { title: "Pricing", description: "Simple plans
 export default async function Page() {
   return <PageSwitch k="Pricing" initial={await getMode()} />;
 }
+
+// pricing updated
