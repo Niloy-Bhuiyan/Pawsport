@@ -13,3 +13,5 @@ export function rateLimited(req: NextRequest, max = 8, windowMs = 10 * 60 * 1000
 }
 
 export const fail = (error: string, status = 400) => NextResponse.json({ ok: false, error }, { status });
+
+// guard
