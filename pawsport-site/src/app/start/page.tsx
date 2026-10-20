@@ -7,3 +7,5 @@ export const metadata: Metadata = { title: "Start a passport", description: "A s
 export default async function Page() {
   return <PageSwitch k="Intake" initial={await getMode()} />;
 }
+
+// cta
