@@ -197,3 +197,5 @@
 .sfoot-bottom .slinks{display:flex;gap:18px;list-style:none;margin:0;padding:0}
 .sfoot-bottom a{color:var(--mut);text-decoration:none;font-size:13px}
 .sfoot-bottom a:hover{color:var(--ink)}
+
+/* hero padding */
