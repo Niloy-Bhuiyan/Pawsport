@@ -1,0 +1,167 @@
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/fraunces-latin-full-normal.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:100 900;font-display:swap;src:url('/fonts/fraunces-latin-full-italic.woff2') format('woff2')}
+@font-face{font-family:'Figtree';font-style:normal;font-weight:300 900;font-display:swap;src:url('/fonts/figtree-latin-wght-normal.woff2') format('woff2')}
+@font-face{font-family:'DM Mono';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/dm-mono-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'DM Mono';font-style:normal;font-weight:500;font-display:swap;src:url('/fonts/dm-mono-latin-500-normal.woff2') format('woff2')}
+
+:root{--paper:#F6ECD7;--paper2:#FBF4E4;--cream:#FFF6E4;--ink:#2B2118;--mut:#6A5A48;--rust:#C2492A;--rustd:#A8401F;--teal:#2F6F6B;--tan:#D9C39A}
+
+html{background:#F6ECD7;overflow-x:clip;-webkit-text-size-adjust:100%}
+body{margin:0;background:#F6ECD7;overflow-x:clip}
+/* The designs are drawn at 1440px (desktop) and 390px (phone). The stage scales them to the screen. */
+.stage{zoom:var(--z,1)}
+.stage.d{width:1440px}
+.stage.m{width:390px;margin:0 auto}
+.stage.d.fit{margin:0 auto}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* Booklet forms: keep only the book. Side rail, tag, suitcase, planes and page tabs are decoration. */
+.stage.fit .bkst .rail,
+.stage.fit .bkst .rtag,
+.stage.fit .bkst .sw,
+.stage.fit .bkst .fly,
+.stage.fit .bkst .tabs2{display:none!important}
+.stage.fit .chtip{display:none!important}
+
+/* Portal (desktop): the sidebar already navigates, so drop the duplicate tab row and the demo toggle. */
+.stage.d[data-k=Portal] .app .tabs,
+.stage.d[data-k=Portal] .app .prev{display:none!important}
+/* The chat teaser bubble only greets people on the home page. */
+.stage:not([data-k=Home]) .chtip{display:none!important}
+
+/* Inner pages: text first. Home keeps the full illustrated treatment. */
+.stage:not([data-k=Home]):not(.fit) .phd .hfly,
+.stage:not([data-k=Home]):not(.fit) .phd .scw,
+.stage:not([data-k=Home]):not(.fit) .pk,
+.stage:not([data-k=Home]):not(.fit) .ft .ftrail,
+.stage:not([data-k=Home]):not(.fit) .ft .ftpaws{display:none!important}
+
+.stage:not([data-k=Home]):not(.fit) .phd,
+.stage:not([data-k=Home]):not(.fit) .phd .in{height:auto!important;min-height:0!important}
+.stage:not([data-k=Home]):not(.fit) .phd .in{padding-bottom:40px}
+
+/* No contour lines or route trail behind text outside Home. */
+.stage:not([data-k=Home]) .tp,
+.stage:not([data-k=Home]) .phd .trw{display:none!important}
+
+/* ===== Minimal pass (.minimal pages only — Home is untouched) =====
+   Same content and logic, calmer surface: no scroll-triggered pop-ins,
+   no scrolling ticker tapes, no decorative tilts, no paper texture. */
+
+/* Content appears in place; nothing flies, pops or wipes in on scroll/mount. */
+.stage.minimal .pg .rv,
+.stage.minimal .pg .rvl,
+.stage.minimal .pg .rvr,
+.stage.minimal .pg .rvs,
+.stage.minimal .pg .rvst,
+.stage.minimal .pg .turn,
+.stage.minimal .pg .thud,
+.stage.minimal .pg .sbx.thud,
+.stage.minimal .pg .ptag .pick,
+.stage.minimal .pg .dcard,
+.stage.minimal .pg .mnu{animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}
+
+/* Scrolling ticker tapes read as noise, not information — drop them. */
+.stage.minimal .pg .mq,
+.stage.minimal .pg .belt{display:none!important}
+
+/* Straighten the playful rotated stamps, stickers and alternating card tilt. */
+.stage.minimal .pg .ltag,
+.stage.minimal .pg .ad,
+.stage.minimal .pg .py,
+.stage.minimal .pg .sk,
+.stage.minimal .pg .eyb,
+.stage.minimal .pg .sbx,
+.stage.minimal .pg .stmp{transform:none!important;rotate:none!important;mix-blend-mode:normal!important}
+
+/* Plain lift on hover instead of a rotate-and-lift flourish. */
+.stage.minimal .pg .ltag:hover{transform:translateY(-4px)!important;box-shadow:0 18px 24px -18px rgba(43,33,24,.35)!important}
+.stage.minimal .pg .ad:hover,
+.stage.minimal .pg .py:hover{transform:translateY(-4px)!important}
+.stage.minimal .pg .sk:hover{transform:translateY(-2px)!important;box-shadow:0 10px 14px -8px rgba(43,33,24,.35)!important}
+.stage.minimal .pg .btn:hover{transform:translateY(-2px)!important;box-shadow:0 10px 16px -10px rgba(43,33,24,.4)!important}
+.stage.minimal .pg .btn svg{transform:none!important}
+.stage.minimal .pg .chc:hover{transform:translateY(-2px)!important}
+
+/* Flatten the printed-paper textures and dashed decorative frames to plain surfaces. */
+.stage.minimal .pg .s-teal,
+.stage.minimal .pg .visa,
+.stage.minimal .pg .bk-l,
+.stage.minimal .pg .bk-r,
+.stage.minimal .pg .ad,
+.stage.minimal .pg .py,
+.stage.minimal .pg .cmp,
+.stage.minimal .pg .mnu{background-image:none!important}
+.stage.minimal .pg .s-rust::after,
+.stage.minimal .pg .s-teal::after{display:none!important}
+
+/* Chat launcher: stop the idle bob, keep a plain hover scale. */
+.stage.minimal .pg .chbtn{animation:none!important}
+.stage.minimal .pg .chbtn:hover{transform:scale(1.05)!important}
+
+/* ---- Round 2: the page was still reading as busy, not just animated.
+   Root causes: saturated full-bleed color blocks, a dark/light card
+   mismatch, decorative connector strings, heavy shadows everywhere,
+   and generous spacing tuned for an illustrated page, not a plain one.
+   Below: neutral section surfaces, one consistent card style, flat
+   elevation (borders instead of shadows), tighter rhythm. Accent color
+   stays on buttons, links, badges and the one "recommended" marker —
+   never on a whole section background. */
+
+/* Saturated section fills -> quiet neutral paper tones. Section rhythm
+   still reads (the shade still changes) without shouting in brand color. */
+.stage.minimal .pg .s-rust,
+.stage.minimal .pg .s-teal,
+.stage.minimal .pg .s-ink,
+.stage.minimal .pg .dark,
+.stage.minimal .pg .band-rust,
+.stage.minimal .pg .ctab{background:var(--paper2)!important;color:var(--ink)!important;background-image:none!important}
+.stage.minimal .pg .s-rust::before{display:none!important}
+.stage.minimal .pg .s-rust .eyb,
+.stage.minimal .pg .s-teal .eyb,
+.stage.minimal .pg .s-ink .eyb,
+.stage.minimal .pg .dark .eyb{color:var(--rustd)!important}
+.stage.minimal .pg .h2.lt,
+.stage.minimal .pg .lt{color:var(--ink)!important}
+.stage.minimal .pg .lead.lt{color:var(--mut)!important}
+.stage.minimal .pg .btn.o.lt{color:var(--ink)!important;box-shadow:inset 0 0 0 2px var(--ink)!important}
+.stage.minimal .pg .btn.r{background:var(--ink)!important;color:var(--paper)!important}
+
+/* Drop the hanging connector strings and their empty anchor dot. */
+.stage.minimal .pg .str{display:none!important}
+.stage.minimal .pg .ltag::before{display:none!important}
+
+/* One card style, not a dark one next to a light one. */
+.stage.minimal .pg .ltag.feat{background:var(--paper2)!important;color:var(--ink)!important;border:1.5px solid var(--tan)!important}
+.stage.minimal .pg .ltag.feat p,
+.stage.minimal .pg .ltag.feat .recm{color:var(--mut)!important}
+.stage.minimal .pg .ltag.feat li svg{color:var(--teal)!important}
+.stage.minimal .pg .ltag.feat::before{display:none!important}
+.stage.minimal .pg .ptag.feat{background:var(--paper2)!important;color:var(--ink)!important}
+.stage.minimal .pg .ptag.feat .wk b,
+.stage.minimal .pg .ptag.feat .eyb{color:var(--rust)!important}
+.stage.minimal .pg .ptag.feat .wk>span{color:var(--mut)!important}
+.stage.minimal .pg .ptag.feat p{color:var(--mut)!important}
+.stage.minimal .pg .plan{background:var(--paper2)!important;color:var(--ink)!important}
+.stage.minimal .pg .plan::before{display:none!important}
+.stage.minimal .pg .plan p,
+.stage.minimal .pg .plan .recm{color:var(--mut)!important}
+.stage.minimal .pg .plan .eyb{color:var(--rustd)!important}
+.stage.minimal .pg .plan .wk b{color:var(--rust)!important}
+.stage.minimal .pg .plan .wk>span{color:var(--mut)!important}
+
+/* Flat elevation: a thin border reads as "card" without a heavy drop shadow. */
+.stage.minimal .pg .btn{box-shadow:none!important}
+.stage.minimal .pg .ltag,
+.stage.minimal .pg .ad,
+.stage.minimal .pg .py,
+.stage.minimal .pg .cmp,
+.stage.minimal .pg .visa{box-shadow:none!important;outline:none!important;border:1.5px solid var(--tan)!important}
+
+/* Tighter rhythm: the extra room was reserved for illustration that is now gone. */
+.stage.minimal .pg{--sy:84px}
+.stage.minimal .pg.m{--sy:52px}
+.stage.minimal .pg .tagrow,
+.stage.minimal .pg .tags2{padding-top:30px!important}
