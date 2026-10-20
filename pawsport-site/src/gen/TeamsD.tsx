@@ -51,3 +51,5 @@ export default function TeamsD(props) {
     </>
   );
 }
+
+// pricing table
