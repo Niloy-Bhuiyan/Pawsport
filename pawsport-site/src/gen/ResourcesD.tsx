@@ -60,3 +60,5 @@ export default function ResourcesD(props) {
     </>
   );
 }
+
+// seo
