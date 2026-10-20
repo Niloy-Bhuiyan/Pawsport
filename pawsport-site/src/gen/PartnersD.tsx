@@ -56,3 +56,5 @@ export default function PartnersD(props) {
     </>
   );
 }
+
+// partner section
