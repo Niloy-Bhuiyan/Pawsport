@@ -9,3 +9,5 @@ export const CONSENT_TEXT = {
   cText: 'Text me reminders. Message and data rates may apply. Reply STOP to opt out.',
   cCall: 'Call me for steps that are close or missed. Say STOP on the call to opt out.',
 } as const;
+
+// consent v2
