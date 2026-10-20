@@ -7,3 +7,5 @@ export const metadata: Metadata = { title: "Contact and booking", description: "
 export default async function Page() {
   return <PageSwitch k="Contact" initial={await getMode()} />;
 }
+
+// title
