@@ -1,0 +1,56 @@
+{
+ "Arrival": {
+  "title": "Arrival card"
+ },
+ "Builder": {
+  "title": "Plan builder"
+ },
+ "Contact": {
+  "title": "Contact and booking"
+ },
+ "Destinations": {
+  "title": "Destination guides"
+ },
+ "Home": {
+  "title": "Every paw print leads home"
+ },
+ "How": {
+  "title": "How it works"
+ },
+ "Intake": {
+  "title": "Passport"
+ },
+ "PartnerApp": {
+  "title": "Partner application"
+ },
+ "Partners": {
+  "title": "Partner program"
+ },
+ "Portal": {
+  "title": "Client portal"
+ },
+ "Pricing": {
+  "title": "Pricing"
+ },
+ "Privacy": {
+  "title": "Privacy policy"
+ },
+ "Quick": {
+  "title": "Quick inquiry"
+ },
+ "Resources": {
+  "title": "Blog and resources"
+ },
+ "TeamDemo": {
+  "title": "Teams demo"
+ },
+ "Teams": {
+  "title": "Pawsport for Teams"
+ },
+ "Terms": {
+  "title": "Terms of service"
+ },
+ "Upload": {
+  "title": "Document upload"
+ }
+}
